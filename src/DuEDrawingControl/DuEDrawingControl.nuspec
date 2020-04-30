@@ -7,11 +7,12 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <license type="expression">GPL-3.0-or-later</license>
+    <license type="expression">LGPL-3.0-only</license>
     <projectUrl>https://github.com/weianweigan/DuEDrawingControl</projectUrl>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
-    <description>eDrawing controls used in Winform and WPF.</description>
+    <iconUrl>https://github.com/weianweigan/DuEDrawingControl/blob/master/icons/edrawing.png?raw=true</iconUrl>
+    <description>eDrawing controls for winform and WPF</description>
+    <releaseNotes>eDrawing controls for winform and WPF</releaseNotes>
     <copyright>Copyright 2020</copyright>
-    <tags>eDrawing SolidWorks PreView 3D</tags>
+    <tags>SolidWorks eDrawing</tags>
   </metadata>
 </package>

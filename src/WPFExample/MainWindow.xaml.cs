@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using DuEDrawingControl;
+using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace WPFExample
             InitializeComponent();
 
             //Add edrawing control
-            edrawing = new DuEDrawingControl.EDrawingWPFControl() { 
+            edrawing = new EDrawingWPFControl() { 
                 Margin = new Thickness(5)
             };
             edrawingPanel.Children.Add(edrawing);

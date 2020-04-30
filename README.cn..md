@@ -8,9 +8,9 @@
 
 # DuEDrawingControl
 
-English | [中文](https://github.com/weianweigan/DuEDrawingControl/blob/master/README.cn.md)
+[English]((https://github.com/weianweigan/DuEDrawingControl/blob/master/README.md)) | 中文
 
-eDrawing Controls for Winform and WPF
+在Winform和wpf中使用的edrawing 控件。使用了c# dynamic 类型封装，这样就不需要引用edrawing的dll，不需要额外配置，直接引用便可以使用。
 
 **Winform:**
 
@@ -20,21 +20,15 @@ eDrawing Controls for Winform and WPF
 
 <div align=left><img src="icons/wpf.png" width="400"/></div>
 
-## Install
+## 安装
 
 ```
 Install-Package DuEDrawingControl -Version 1.0.1
 ```
 
-## Usage
-
-```csharp
-using DuEDrawingControl;
-```
+## 使用
 
 ### 1.Winform
-
-
 
 ```csharp
 
@@ -73,10 +67,10 @@ Clone this repository for more
 
 Clone this repository for more
 
-## Example
+## 示例
 
 ![](./icons/example.png)
 
-## Api List
+## 实现的edrawing api
 
 ![api](./icons/api.png)
