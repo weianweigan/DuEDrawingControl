@@ -9,7 +9,7 @@
 # DuEDrawingControl
 
 
-English | [жпнд](https://github.com/weianweigan/DuEDrawingControl/blob/master/README.cn.md)
+English | [Chinese](https://github.com/weianweigan/DuEDrawingControl/blob/master/README.cn.md)
 
 
 eDrawing Controls for Winform and WPF
