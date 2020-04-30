@@ -14,11 +14,11 @@ eDrawing Controls for Winform and WPF
 
 **Winform:**
 
-<div align=left><img src="icons/winform.png" width="400"/></div>
+<div align=left><img src="./icons/winform.png" width="400"/></div>
 
 **WPF**
 
-<div align=left><img src="icons/wpf.png" width="400"/></div>
+<div align=left><img src="./icons/wpf.png" width="400"/></div>
 
 ## Install
 
