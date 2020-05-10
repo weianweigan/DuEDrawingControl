@@ -22,6 +22,23 @@ eDrawing Controls for Winform and WPF
 
 <div align=left><img src="./icons/wpf.png" width="400"/></div>
 
+**PreView Assembly Document**
+
+<div align=left><img src="./icons/assembly.png" width="400"/></div>
+
+**PreView Drawing Document**
+
+<div align=left><img src="./icons/drawing.png" width="400"/></div>
+
+**Print Document**
+
+<div align=left><img src="./icons/print.png" width="400"/></div>
+
+**Create ToolTip**
+
+<div align=left><img src="./icons/tooltip.png" width="400"/></div>
+
+
 ## Install
 
 ```
@@ -30,11 +47,20 @@ Install-Package DuEDrawingControl -Version 1.0.1
 
 ## Usage
 
+**1.eDrawing Required**
+
+**2.NameSpace**
 ```csharp
 using DuEDrawingControl;
 ```
 
-### 1.Winform
+**3.Modify the platform as X64**
+
+<div align=left><img src="./icons/x64.png" width="400"/></div>
+
+**4.Add Control**
+
+### Winform
 
 
 
@@ -56,7 +82,7 @@ using DuEDrawingControl;
 
 Clone this repository for more
 
-### 2.WPF
+### WPF
 
 ```csharp
         private DuEDrawingControl.EDrawingWPFControl edrawing;

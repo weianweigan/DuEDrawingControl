@@ -20,15 +20,46 @@
 
 <div align=left><img src="icons/wpf.png" width="400"/></div>
 
+**PreView Assembly Document**
+
+<div align=left><img src="./icons/assembly.png" width="400"/></div>
+
+**PreView Drawing Document**
+
+<div align=left><img src="./icons/drawing.png" width="400"/></div>
+
+**Print Document**
+
+<div align=left><img src="./icons/print.png" width="400"/></div>
+
+**Create ToolTip**
+
+<div align=left><img src="./icons/tooltip.png" width="400"/></div>
+
 ## 安装
+
 
 ```
 Install-Package DuEDrawingControl -Version 1.0.1
 ```
 
+
 ## 使用
 
-### 1.Winform
+**1.需要安装eDrawing**
+
+**2.引用命名空间**
+```csharp
+using DuEDrawingControl;
+```
+
+**3.将平台修改为x64**
+
+<div align=left><img src="./icons/x64.png" width="400"/></div>
+
+**4.添加控件**
+
+### Winform
 
 ```csharp
 
@@ -48,7 +79,7 @@ Install-Package DuEDrawingControl -Version 1.0.1
 
 Clone this repository for more
 
-### 2.WPF
+### WPF
 
 ```csharp
         private DuEDrawingControl.EDrawingWPFControl edrawing;

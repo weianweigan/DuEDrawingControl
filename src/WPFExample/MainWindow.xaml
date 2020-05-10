@@ -5,22 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFExample"
         xmlns:edrawing="clr-namespace:DuEDrawingControl;assembly=DuEDrawingControl"
+        xmlns:ptools="http://propertytools.org/wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="31*"/>
-            <RowDefinition Height="4*"/>
-        </Grid.RowDefinitions>
-        <Grid x:Name="edrawingPanel">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="10" x:Name="edrawingPanel">
             
         </Grid>
-        <StackPanel Margin="2,5" Grid.Row="1" Orientation="Horizontal">
-
-            <Button Margin="2,0" Click="Button_Click">打开文档</Button>
-            <Button Margin="2,0" Click="Button_Click_1">打开默认文档</Button>
-            <Button Margin="2,0" Click="Button_Click_2">关闭文档</Button>
-
-        </StackPanel>
+        <GridSplitter Grid.Column="0" Width="10" HorizontalAlignment="Right" ResizeDirection="Columns"></GridSplitter>
+        <ScrollViewer Margin="2,10" Grid.Column="1">
+            <StackPanel Margin="2,5"  Orientation="Vertical" >
+                <Button Margin="2,2" Click="Button_Click">打开文档(OpenDoc)</Button>
+                <Border Margin="2,2" Background="Gray" CornerRadius="5">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton x:Name="part" IsChecked="True">Part</RadioButton>
+                            <RadioButton x:Name="assembly">Assembly</RadioButton>
+                            <RadioButton x:Name="drawing">Drawing</RadioButton>
+                        </StackPanel>
+                        <Button Margin="2,2" Click="Button_Click_1">打开默认文档(OpenDefaultDoc)</Button>
+                    </StackPanel>
+                </Border>
+                <Button Margin="2,2" Click="Button_Click_11">Open MarkUp File</Button>
+                <Button Margin="2,2" Click="Button_Click_2">关闭文档(CloseDoc)</Button>
+                <Button Margin="2,2" Click="Button_Click_3">清除选择(ClearSelection)</Button>
+                <Border Margin="0,2" Background="Gray" CornerRadius="5">
+                    <Expander IsExpanded="False" Header="动画选项(AnimateAction)">
+                        <StackPanel>
+                            <RadioButton x:Name="back">Back(Previous view)</RadioButton>
+                            <RadioButton x:Name="continuous" IsChecked="True">Continuous(Play continuously)</RadioButton>
+                            <RadioButton x:Name="forward">ForWard(Next view)</RadioButton>
+                            <RadioButton x:Name="notanimating">NotAnimating</RadioButton>
+                            <RadioButton x:Name="stopanimation">Stop animation</RadioButton>
+                            <Button Margin="2,4" Height="25" Click="Button_Click_4">动画(Animate)</Button>
+                        </StackPanel>
+                    </Expander>
+                </Border>
+                <Border Margin="0,2" Background="Gray" CornerRadius="5">
+                    <Expander Header="CreateToolTip">
+                        <StackPanel>
+                            <ptools:PropertyGrid x:Name="toolTipProGrid"></ptools:PropertyGrid>
+                            <Button Click="Button_Click_5" Height="25">CreateToolTip</Button>
+                            <Button Click="Button_Click_7">Hide Tooltip with TipID</Button>
+                        </StackPanel>
+                    </Expander>
+                </Border>
+                <Button Margin="2,2" Click="Button_Click_6">Hide All Tooltips</Button>
+                <Button Margin="2,2" Click="Button_Click_8">Refresh</Button>
+                <Border Margin="0,2" Background="Gray" CornerRadius="5">
+                    <Expander Header="Print">
+                        <StackPanel>
+                            <ptools:PropertyGrid x:Name="printProGrid"/>
+                            <Button Height="25" Click="Button_Click_9">Print</Button>
+                        </StackPanel>
+                    </Expander>
+                </Border>
+                <Border Margin="2,2" Background="Gray" CornerRadius="5">
+                    <Expander Header="Save And SaveAs">
+                        <StackPanel>
+                            <ptools:PropertyGrid ShowDescriptionIcons="True" x:Name="saveProGrid"/>
+                            <Button Height="25" Click="Button_Click_10">Save</Button>
+                        </StackPanel>
+                    </Expander>
+                </Border>
+                <Border Margin="2,2" Background="Gray" CornerRadius="5">
+                    <Expander Header="通过射线选择(SelectedByRay)">
+                        <StackPanel>
+                            <ptools:PropertyGrid x:Name="selectedRayProGrid"/>
+                            <Button Height="25" Click="Button_Click_12">选择</Button>
+                        </StackPanel>
+                    </Expander>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+       
     </Grid>
 </Window>

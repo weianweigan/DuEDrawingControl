@@ -58,4 +58,20 @@ namespace DuEDrawingControl
         /// </summary>
         eMVStop = 2
     }
+
+    /// <summary>
+    /// Print orientations.
+    /// </summary>
+    public enum EMVPrintOrientation
+    {
+        /// <summary>
+        /// Landscape
+        /// </summary>
+        eLandscape = 2,
+
+        /// <summary>
+        /// Portrait
+        /// </summary>
+        ePortrait = 1
+    }
 }
