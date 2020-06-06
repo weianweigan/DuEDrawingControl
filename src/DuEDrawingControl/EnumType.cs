@@ -74,4 +74,18 @@ namespace DuEDrawingControl
         /// </summary>
         ePortrait = 1
     }
+
+    /// <summary>
+    /// Mass Properties
+    /// </summary>
+    public enum EMVMassProperty
+    {
+        eMVDensity = 3,
+
+        eMVMass = 0,
+        
+        eMVSurfaceArea =1,
+
+        eMVVolume = 2
+    }
 }

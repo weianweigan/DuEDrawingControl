@@ -19,10 +19,11 @@ namespace WPFExample
             InitializeComponent();
 
             //Add edrawing control
-            edrawing = new EDrawingWPFControl() { 
-                Margin = new Thickness(5)
-            };
-            edrawingPanel.Children.Add(edrawing);
+            //edrawing = new EDrawingWPFControl() { 
+            //    Margin = new Thickness(5)
+            //};
+            //edrawingPanel.Children.Add(edrawing);
+            edrawing = edrawingControl;
 
             toolTipProGrid.SelectedObject = new ToolTipData();
 

@@ -14,7 +14,8 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Margin="10" x:Name="edrawingPanel">
-            
+            <edrawing:EDrawingWPFControl Background="Gray" Name="edrawingControl">
+            </edrawing:EDrawingWPFControl>
         </Grid>
         <GridSplitter Grid.Column="0" Width="10" HorizontalAlignment="Right" ResizeDirection="Columns"></GridSplitter>
         <ScrollViewer Margin="2,10" Grid.Column="1">

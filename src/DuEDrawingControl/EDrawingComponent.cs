@@ -1,25 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿/*
+ 
+ Edrawing IEModelView控件属性和方法的主要实现
+
+ WeiGan 2020 4/30 创建 发布nuget包
+
+ WeiGan 2020 6/6 添加属性 FullUI - ShowShaderEdges
+
+ */
 
 namespace DuEDrawingControl
 {
+    using System;
+    using System.Windows.Forms;
+
     public partial class EDrawingComponent : AxHost
     {
-        public event Action<dynamic> OnControlLoaded;
-
+        #region Fields
+        
         private bool _isLoaded;
         private ComponentCountCls _componentCount;
 
-        /// <summary>
-        /// activeX control
-        /// </summary>
-        public dynamic Ocx { get; private set; }
+        #endregion
+
+        #region Event
+
+        public event Action<dynamic> OnControlLoaded;
+
+        #endregion
+
+        #region ctor
 
         /// <summary>
         /// ctor
@@ -28,6 +37,10 @@ namespace DuEDrawingControl
         {
             _isLoaded = false;
         }
+
+        #endregion
+
+        #region Other method
 
         protected override void OnCreateControl()
         {
@@ -41,7 +54,14 @@ namespace DuEDrawingControl
             }
         }
 
+        #endregion
+
         #region Properties
+
+        /// <summary>
+        /// activeX control
+        /// </summary>
+        public dynamic Ocx { get; private set; }
 
         /// <summary>
         /// Gets the screen coordinates of the upper-left and lower-right corners of the window.
@@ -258,7 +278,7 @@ namespace DuEDrawingControl
         /// <param name="Config"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        public string ComponentName(string Config,int index)
+        public string ComponentName(string Config, int index)
         {
             VerifyOcx();
             return Ocx[Config, index];
@@ -282,7 +302,203 @@ namespace DuEDrawingControl
             }
         }
 
+        /// <summary>
+        /// Gets or sets whether to show complete UI mode or simple UI mode.
+        /// -1 to show complete UI mode, 0 to show simple UI mode
+        /// </summary>
+        public int FullUI
+        {
+            get
+            {
+                VerifyOcx();
+                return Ocx.FullUI;
+            }
+            set
+            {
+                VerifyOcx();
+                if (value < -1 || value > 0)
+                {
+                    throw new InvalidOperationException($"The FullUI Property only can be set to -1 or 0,you canot set it as {value.ToString()}");
+                }
+                Ocx.FullUI = value;
+            }
+        }
 
+        /// <summary>
+        /// Gets the height of the control.
+        /// </summary>
+        /// <remarks>Depending on the programming environment, height and width may be displayed in either Twips or Pixels. See MSDN for more information on Twips.</remarks>
+        public int EdrawingHeight { get { VerifyOcx(); return Ocx.Height; } }
+
+        ///<summary>Gets or sets the color used when an entity is selected</summary>
+        ///<remarks>A COLORREF is a 32-bit integer value that specifies the red, blue, and green components of a 24-bit color.See http://msdn2.microsoft.com/en-us/library/ms532655.aspx for details.</remarks>
+        public int HighlightColor
+        {
+            get
+            {
+                VerifyOcx();
+                return Ocx.HighlightColor;
+            }
+            set
+            {
+                VerifyOcx();
+                Ocx.HighlightColor = value;
+            }
+        }
+
+        ///<summary>Gets whether the markup file was modified.True if markup file was modified, false if not</summary>
+        public bool IsMarkupModified { get { VerifyOcx(); return Ocx.IsMarkupModified; } }
+
+        ///<summary>Gets whether the current document is measure-enabled.</summary>
+        public bool IsMeasureEnabled { get { VerifyOcx(); return Ocx.IsMeasureEnabled; } }
+
+        ///<summary>Gets the number of layers in this eDrawings document.</summary>
+        ///<remarks>Call this property before calling IEModelViewControl::LayerName to get the total number of the layers in this eDrawings document.</remarks>
+        public int LayerCount { get { VerifyOcx(); return Ocx.LayerCount; } }
+
+        ///<summary>Gets the name of the specified layer in this eDrawings document.</summary>
+        ///<remarks>Before calling this property, call IEModelViewControl::LayerCount to get the total number of layers in this eDrawings document.</remarks>
+        public string LayerName { get { VerifyOcx(); return Ocx.LayerName; } }
+
+        /// <summary>
+        /// Gets the value of the specified mass property.
+        /// </summary>
+        public double GetMassProperty(EMVMassProperty massProperty)
+        {
+            VerifyOcx();
+            return Ocx.MassProperty((int)massProperty);
+        }
+
+        /// <summary>
+        /// Gets the material name.
+        /// </summary>
+        /// <remarks>If the material name is not available, the string <not specified> is returned.</remarks>
+        public string MaterialPropertyName { get { VerifyOcx(); return Ocx.MaterialPropertyName; } }
+
+        ///<summary>Gets or sets the color of the paper (sheet) for an eDrawings document of a drawing only. </summary>
+        ///<remarks>IEModelViewControl::PaperColorOverride must be true for this method to have an effect. A COLORREF is a 32-bit integer value that specifies the red, blue, and green components of a 24-bit color.See http://msdn2.microsoft.com/en-us/library/ms532655.aspx for details. </remarks>
+        public int PaperColor
+        {
+            get
+            {
+                VerifyOcx();
+                return PaperColor;
+            }
+            set
+            {
+                VerifyOcx();
+                Ocx.PaperColor = value;
+            }
+        }
+
+        ///<summary>Specifies whether to override the color of the paper of an eDrawings document of a drawing and display the color specified by IEModelViewControl::PaperColor. </summary>
+        ///<value>True to override the color of the paper, false to not</value>
+        public bool PaperColorOverride
+        {
+            get
+            {
+                VerifyOcx(); return Ocx.PaperColorOverride;
+            }
+            set { VerifyOcx(); Ocx.PaperColorOverride = value; }
+        }
+
+        /// <summary>
+        /// Sets the password needed to open a model downloaded from a server that requires authentication.
+        /// </summary>
+        /// <value>Password needed to open a model downloaded from a server that requires authentication</value>
+        public string Password
+        {
+            set
+            {
+                VerifyOcx();
+                Ocx.Password = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets whether shadows are enabled in parts and assemblies. 
+        /// </summary>
+        public bool ShadowEnabled
+        {
+            get
+            {
+                VerifyOcx(); return Ocx.ShadowEnabled;
+            }
+            set
+            {
+                VerifyOcx();
+                Ocx.ShadowEnabled = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the total number of drawing sheets. 
+        /// </summary>
+        public int SheetCount { get { VerifyOcx(); return Ocx.SheetCount; } }
+
+        /// <summary>
+        /// Gets the height of the drawing sheet.
+        /// </summary>
+        public double SheetHeight { get { VerifyOcx(); return Ocx.SheetHeight; } }
+
+        /// <summary>
+        /// Gets the name of the specified drawing sheet. 
+        /// </summary>
+        /// <param name="index">Index number of the drawing sheet to get</param>
+        /// <returns>Name of the drawing sheet</returns>
+        public string GetSheetName(int index)
+        {
+            VerifyOcx();
+            return Ocx.SheetName[index];
+        }
+
+        /// <summary>
+        /// Gets the width of the drawing sheet.
+        /// </summary>
+        /// <value>Width of drawing sheet in either inches or millimeters, depending on the regional settings of your computer, not the model units of the drawing</value>
+        public double SheetWidth { get { VerifyOcx(); return Ocx.SheetWidth; } }
+
+        /// <summary>
+        /// Gets the layer to show. 
+        /// </summary>
+        /// <param name="layerName">Name of layer to show(see Remarks)</param>
+        /// <returns></returns>
+        /// <remarks>Before calling this method, call IEModelViewControl::LayerName to get the name of the layer to show.</remarks>
+        public bool GetShowLayer(string layerName)
+        {
+            VerifyOcx();
+            return Ocx.GetShowLayerName(layerName);
+        }
+
+        /// <summary>
+        /// Sets the layer to show. 
+        /// </summary>
+        /// <param name="layerName">Name of layer to show(see Remarks)</param>
+        /// <param name="value"></param>
+        /// <remarks>
+        /// Before calling this method, call IEModelViewControl::LayerName to get the name of the layer to show.</remarks>
+        public void SetShowLayerName(string layerName, bool value)
+        {
+            VerifyOcx();
+            Ocx.SetShowLayerName(layerName, value);
+        }
+
+        /// <summary>
+        /// Gets or sets whether to show edges in shaded mode. 
+        /// </summary>
+        public bool ShowShadowEdge
+        {
+            get
+            {
+                VerifyOcx();
+                return Ocx.ShowShadowEdge;
+            }
+            set
+            {
+                VerifyOcx();
+                Ocx.ShowShadowEdge = value;
+            }
+        }
 
         //TODO More Properties
 
