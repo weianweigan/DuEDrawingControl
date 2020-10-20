@@ -15,6 +15,8 @@ namespace DuEDrawingControl
     [Description("eDrawing Control for PreView")]
     public class EDrawingView:UserControl
     {
+        public event Action<dynamic> OnControlLoaded;
+
         /// <summary>
         /// 通过此属性调用eDrawing api
         /// </summary>
@@ -32,6 +34,7 @@ namespace DuEDrawingControl
         private void Host_OnControlLoaded(dynamic obj)
         {
             Ctrl = obj;
+            OnControlLoaded?.Invoke(obj);
         }
 
         private void EDrawingControl_Load(object sender, EventArgs e)

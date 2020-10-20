@@ -1,9 +1,7 @@
 ﻿using DuEDrawingControl;
-using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace WPFExample
 {
@@ -24,6 +22,8 @@ namespace WPFExample
             //};
             //edrawingPanel.Children.Add(edrawing);
             edrawing = edrawingControl;
+            //edrawing.EDrawingHost.OnControlLoaded += EDrawingHost_OnControlLoaded;
+            edrawing.OnControlLoaded += EDrawingHost_OnControlLoaded;
 
             toolTipProGrid.SelectedObject = new ToolTipData();
 
@@ -32,6 +32,14 @@ namespace WPFExample
             saveProGrid.SelectedObject = new SaveData();
 
             selectedRayProGrid.SelectedObject = new SelectedByRayData();
+        }
+
+        private void EDrawingHost_OnControlLoaded(dynamic obj)
+        {
+            //启动时加载
+            var testModel = Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "test.SLDPRT");
+            edrawing.EDrawingHost.OpenDoc(testModel, false, false, false);
+
         }
 
         //openDoc
