@@ -22,11 +22,11 @@ jobs:
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild src\IO.Milvus.sln /t:Restore /p:Configuration=Release
+      run: msbuild src\DuEDrawingControl.sln /t:Restore /p:Configuration=Release
 
     # build release
     - name: Build Relase
-      run: msbuild src\IO.Milvus.sln /p:Configuration=Release
+      run: msbuild src\DuEDrawingControl.sln /p:Configuration=Release
       
     # 4.Install Nuget
     - name: Install Nuget
@@ -38,4 +38,4 @@ jobs:
     # 5. Push  package
     - name: Push generated package to GitHub registry
       run: |
-        .\nuget push .\src\IO.Milvus\bin\Release\*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NugetKey }} -NoSymbols
+        .\nuget push .\src\DuEDrawingControl\bin\x64\Release\*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NugetKey }} -NoSymbols
