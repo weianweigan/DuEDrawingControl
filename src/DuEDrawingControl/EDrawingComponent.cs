@@ -100,6 +100,43 @@ namespace DuEDrawingControl
         }
 
         /// <summary>
+        /// Gets whether ambient occlusion is permitted. 
+        /// </summary>
+        /// <remake>
+        /// https://help.solidworks.com/2019/english/api/emodelapi/eDrawings.Interop.EModelViewControl~eDrawings.Interop.EModelViewControl.IEModelViewControl~AmbientOcclusionAllowed.html
+        ///</remake>>
+        public bool AmbientOcclusionAllowed
+        {
+            get
+            {
+                VerifyOcx();
+                return Ocx.AmbientOcclusionAllowed;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets whether ambient occlusion is enabled.
+        /// </summary>
+        /// <remake>
+        /// https://help.solidworks.com/2019/english/api/emodelapi/eDrawings.Interop.EModelViewControl~eDrawings.Interop.EModelViewControl.IEModelViewControl~AmbientOcclusionEnabled.html
+        ///</remake>>
+        public bool AmbientOcclusionEnabled
+        {
+            get
+            {
+                VerifyOcx();
+                return Ocx.AmbientOcclusionEnabled;
+            }
+            set
+            {
+                VerifyOcx();
+                Ocx.AmbientOcclusionEnabled = value;
+            }
+
+        }
+
+
+        /// <summary>
         /// Gets or sets the background color for all eDrawings files.
         /// </summary>
         /// <remarks>
@@ -281,15 +318,121 @@ namespace DuEDrawingControl
         public string ComponentName(string Config, int index)
         {
             VerifyOcx();
-            return Ocx[Config, index];
+            return Ocx.ComponentName[Config, index];
         }
 
+        /// <summary>
+        /// <remake>Gets the state of the specified component
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="State"></param>
+        /// <remake>https://help.solidworks.com/2018/english/api/emodelapi/eDrawings.Interop.EModelViewControl~eDrawings.Interop.EModelViewControl.IEModelViewControl~ComponentState.html</remake>>
+        /// <returns></returns>
+        public bool ComponentState_Get(string Name,EMVComponentState State)
+        {
+            VerifyOcx();
+            return Ocx.ComponentState(Name,State);
+        }
+
+        /// <summary>
+        /// sets the state of the specified component. 
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="State"></param>
+        /// <param name="value"></param>
+        /// <remake>https://help.solidworks.com/2018/english/api/emodelapi/eDrawings.Interop.EModelViewControl~eDrawings.Interop.EModelViewControl.IEModelViewControl~ComponentState.html</remake>>
+        public void ComponentState_Set(string Name, EMVComponentState State,bool value)
+        {
+            VerifyOcx();
+            Ocx.ComponentState[Name, State]=value;
+        }
+        /// <summary>
+        /// Gets  the transform for the specified component. 
+        /// </summary>
+        /// <param name="ComponentName"></param>
+        /// <returns></returns>
+        /// <remake> https://help.solidworks.com/2019/english/api/emodelapi/eDrawings.Interop.EModelViewControl~eDrawings.Interop.EModelViewControl.IEModelViewControl~ComponentTransform.html</remake>>
+        public double[] ComponentTransform_Get(string ComponentName)
+        {
+            VerifyOcx();
+            return Ocx.ComponentTransform(ComponentName);
+        }
+
+        /// <summary>
+        ///  sets the transform for the specified component. 
+        /// </summary>
+        /// <param name="ComponentName"></param>
+        /// <param name="value"></param>
+        /// <remake>https://help.solidworks.com/2019/english/api/emodelapi/eDrawings.Interop.EModelViewControl~eDrawings.Interop.EModelViewControl.IEModelViewControl~ComponentTransform.html</remake>>
+        public void ComponentTransform_Set(string ComponentName, double[] value)
+        {
+            VerifyOcx();
+            Ocx.ComponentTransform[ComponentName]=value;
+        }
+
+        /// <summary>
+        /// Gets the total number of configurations. 
+        /// </summary>
+        public int ConfigurationCount{get { VerifyOcx(); return Ocx.ConfigurationCount; }}
+
+        /// <summary>
+        /// Gets the name of the specified configuration. 
+        /// </summary>
+        /// <param name="ConfigurationIndex"></param>
+        /// <returns></returns>
+        public string ConfigurationName(int ConfigurationIndex)
+        {
+            VerifyOcx();
+            return Ocx.ConfigurationName(ConfigurationIndex);
+        }
+
+        /// <summary>
+        /// Gets the index number of this configuration. 
+        /// </summary>
+        public int CurrentConfigurationIndex{get { VerifyOcx();return Ocx.CurrentConfigurationIndex; }}
+
+        /// <summary>
+        /// Gets the index number of the currently displayed drawing sheet. 
+        /// </summary>
+        public int CurrentSheetIndex {get {VerifyOcx(); return Ocx.CurrentSheetIndex; } }
+
+        /// <summary>
+        /// Gets a property of the IEModelViewControl. 
+        /// </summary>
+        /// <param name="feature"></param>
+        /// <returns></returns>
+        public bool EnableFeature_Get(EMVEnableFeatures feature)
+        {
+            VerifyOcx();
+            return Ocx.EnableFeature(feature);
+        }
+
+        /// <summary>
+        /// Sets a property of the IEModelViewControl. 
+        /// </summary>
+        /// <param name="feature"></param>
+        /// <param name="value"></param>
+        public void EnableFeature_Set(EMVEnableFeatures feature, bool value)
+        {
+            VerifyOcx();
+            Ocx.EnableFeature[feature]=value;          
+        }
+
+        /// <summary>
+        /// Gets or sets properties of the IEModelViewControl. 
+        /// </summary>
+        public int EnableFeatures
+        {
+            get { VerifyOcx(); return Ocx.EnableFeatures; }
+            set { VerifyOcx(); Ocx.EnableFeatures = value; }
+        }
 
         /// <summary>
         /// Gets the path and name of the file to open or the file name of the currently displayed file.
         /// </summary>
         public string FileName
         {
+     
             get
             {
                 VerifyOcx();
@@ -344,6 +487,29 @@ namespace DuEDrawingControl
                 VerifyOcx();
                 Ocx.HighlightColor = value;
             }
+        }
+
+        /// <summary>
+        /// Gets the number of SOLIDWORKS ink markups. 
+        /// <remake>https://help.solidworks.com/2020/english/api/emodelapi/eDrawings.Interop.EModelViewControl~eDrawings.Interop.EModelViewControl.IEModelViewControl~InkMarkupCount.html</remake>>
+        /// <Availability>2020</Availability>
+        /// </summary>
+        public int InkMarkupCount
+        {            
+            get { VerifyOcx();return Ocx.InkMarkupCount; }        
+        }
+
+        /// <summary>
+        /// Gets the name of the specified SOLIDWORKS ink markup.
+        /// </summary>
+        /// <param name="InkMarkupIndex"></param>
+        /// <remake>https://help.solidworks.com/2020/english/api/emodelapi/eDrawings.Interop.EModelViewControl~eDrawings.Interop.EModelViewControl.IEModelViewControl~InkMarkupName.html</remake>>
+        /// <Availability>2020</Availability>
+        /// <returns></returns>
+        public string InkMarkupName(int InkMarkupIndex)
+        {
+            VerifyOcx();
+            return Ocx.InkMarkupName(InkMarkupIndex);
         }
 
         ///<summary>Gets whether the markup file was modified.True if markup file was modified, false if not</summary>
@@ -444,6 +610,13 @@ namespace DuEDrawingControl
         /// <summary>
         /// Gets the name of the specified drawing sheet. 
         /// </summary>
+        /// <param name="SheetIndex"></param>
+        /// <returns></returns>
+        public string SheetName(int SheetIndex) {  VerifyOcx(); return Ocx.SheetName(SheetIndex);  }
+
+        /// <summary>
+        /// Gets the name of the specified drawing sheet. 
+        /// </summary>
         /// <param name="index">Index number of the drawing sheet to get</param>
         /// <returns>Name of the drawing sheet</returns>
         public string GetSheetName(int index)
@@ -458,16 +631,29 @@ namespace DuEDrawingControl
         /// <value>Width of drawing sheet in either inches or millimeters, depending on the regional settings of your computer, not the model units of the drawing</value>
         public double SheetWidth { get { VerifyOcx(); return Ocx.SheetWidth; } }
 
+
+        /// <summary>
+        /// Sets whether to display the specified SOLIDWORKS ink markup. 
+        /// </summary>
+        /// <param name="InkMarkupIndex"></param>
+        /// <Availability>2020</Availability>>
+        /// <returns></returns>
+        public bool ShowInkMarkup(int InkMarkupIndex)
+        {
+            VerifyOcx();
+            return Ocx.ShowInkMarkup( InkMarkupIndex);
+        }
+
         /// <summary>
         /// Gets the layer to show. 
         /// </summary>
         /// <param name="layerName">Name of layer to show(see Remarks)</param>
         /// <returns></returns>
         /// <remarks>Before calling this method, call IEModelViewControl::LayerName to get the name of the layer to show.</remarks>
-        public bool GetShowLayer(string layerName)
+        public bool ShowLayer_Get(string layerName)
         {
             VerifyOcx();
-            return Ocx.GetShowLayerName(layerName);
+            return Ocx.ShowLayer(layerName);
         }
 
         /// <summary>
@@ -477,10 +663,10 @@ namespace DuEDrawingControl
         /// <param name="value"></param>
         /// <remarks>
         /// Before calling this method, call IEModelViewControl::LayerName to get the name of the layer to show.</remarks>
-        public void SetShowLayerName(string layerName, bool value)
+        public void ShowLayer_Set(string layerName, bool value)
         {
             VerifyOcx();
-            Ocx.SetShowLayerName(layerName, value);
+            Ocx.ShowLayer[layerName]=value;
         }
 
         /// <summary>
@@ -498,6 +684,232 @@ namespace DuEDrawingControl
                 VerifyOcx();
                 Ocx.ShowShadowEdge = value;
             }
+        }
+
+        /// <summary>
+        /// Displays the specified ToolTip at the cursor's location. 
+        /// </summary>
+        /// <param name="TooltipID"></param>
+        /// <returns></returns>True if the ToolTip is displayed at the cursor's location, false if not
+        public bool ShowTipAtMousePosition(int TooltipID)
+        {
+            VerifyOcx();
+            return Ocx.ShowTipAtMousePosition(TooltipID);
+        }
+
+        /// <summary>
+        /// Gets or sets whether stereographic viewing is enabled
+        /// </summary>
+        public bool StereoEnabled
+        {
+            get { VerifyOcx();return Ocx.StereoEnabled; }
+            set { VerifyOcx(); Ocx.StereoEnabled = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the distance between camera position and the stereo focal plane in terms of the camera eye distance. 
+        /// <remake>Distance between camera position and the stereo focal plane in terms of the camera eye distance; default stereo distance = 0
+        /// </summary>
+        public float StereoFocalLength 
+        {
+            get
+            {
+                VerifyOcx();
+                return Ocx.StereoFocalLength;
+            }
+            set
+            {
+                VerifyOcx();
+                Ocx.StereoFocalLength=value;
+            }
+        }
+
+        /// <summary>
+        ///  Gets or sets the angle of separation between right and left stereo views.    
+        ///  <remake>Angle of separation between right and left stereo views; default angle = 3.0 degrees
+        /// </summary>
+        public float StereoSeparation
+        {
+            get { VerifyOcx(); return Ocx.StereoSeparation; }
+            set { VerifyOcx(); Ocx.StereoSeparation = value; }
+        }
+
+        /// <summary>
+        /// Gets  the text for the specified ToolTip. 
+        /// <remake>Read Text for ToolTip
+        /// </summary>
+        public string TipText_Get(int TooltipID)
+        {
+            VerifyOcx();return Ocx.TipText(TooltipID);           
+        }
+
+        /// <summary>
+        /// sets the text for the specified ToolTip. 
+        /// <remake>Write Text for ToolTip
+        /// </summary>
+        public void TipText_Set(int TooltipID,string value)
+        {
+            VerifyOcx();
+            Ocx.TipText[TooltipID] =value;
+        }
+
+        /// <summary>
+        /// Gets the title of the specified ToolTip
+        /// <remake>ToolTip
+        /// </summary>
+        public string TipTitle_Get(int TooltipID)
+        {
+            VerifyOcx(); return Ocx.TipTitle(TooltipID);
+        }
+
+        /// <summary>
+        /// Sets the title of the specified ToolTip
+        /// <remake>ToolTip
+        /// </summary>
+        public void TipTitle_Set(int TooltipID,string value)
+        {
+            VerifyOcx();  Ocx.TipTitle[TooltipID]=value;
+        }
+
+        /// <summary>
+        /// Gets the x coordinate for the specified ToolTip
+        /// </summary>
+        /// <param name="TooltipID"></param>
+        /// <returns></returns>x coordinate for ToolTip
+        public int TipXCoordinate_Get(int TooltipID)
+        {
+            VerifyOcx();
+            return Ocx.TipXCoordinate(TooltipID);
+        }
+
+        /// <summary>
+        ///  Sets the x coordinate for the specified ToolTip
+        /// </summary>
+        /// <param name="TooltipID"></param>ID of ToolTip
+        /// <param name="value"></param>x coordinate for ToolTip
+        public void TipXCoordinate_Set(int TooltipID, int value)
+        {
+            VerifyOcx();
+            Ocx.TipXCoordinate[TooltipID] = value;
+        }
+
+        /// <summary>
+        /// Gets the Y coordinate for the specified ToolTip
+        /// </summary>
+        /// <param name="TooltipID"></param>
+        /// <returns></returns>Y coordinate for ToolTip
+        public int TipYCoordinate_Get(int TooltipID)
+        {
+            VerifyOcx();
+            return Ocx.TipYCoordinate(TooltipID);
+        }
+
+        /// <summary>
+        ///  Sets the Y coordinate for the specified ToolTip
+        /// </summary>
+        /// <param name="TooltipID"></param>ID of ToolTip
+        /// <param name="value"></param>Y coordinate for ToolTip
+        public void TipYCoordinate_Set(int TooltipID, int value)
+        {
+            VerifyOcx();
+            Ocx.TipYCoordinate[TooltipID] = value;
+        }
+
+        /// <summary>
+        /// Gets the total number of ToolTips. 
+        /// <remake>Total number of ToolTips
+        /// </summary>
+        public int TooltipCount
+        {
+            get { VerifyOcx(); return Ocx.TooltipCount; }
+        }
+
+        /// <summary>
+        /// Gets the ID of the ToolTip. 
+        /// </summary>
+        /// <param name="index"></param>Index number of the ToolTip
+        /// <returns></returns>
+        public int TooltipID(int index)
+        {
+            VerifyOcx();
+            return Ocx.TooltipID(index);
+        }
+
+        /// <summary>
+        /// Sets the user name needed to open a model downloaded from a server that requires authentication. 
+        /// </summary>
+        /// <param name="value"></param>User name
+        public void UserName(string value)
+        {
+            VerifyOcx();
+            Ocx.UserName=value;
+        }
+
+        /// <summary>
+        /// Gets the version number of eDrawings. 
+        /// </summary>
+        public string Version
+        {
+            get { VerifyOcx(); return Ocx.Version; }
+        }
+
+        /// <summary>
+        /// Gets or sets the current camera properties. 
+        /// </summary>
+        /// <remake>Array of 12 doubles of the camera properties
+        public double[] ViewCamera
+        {
+            get { VerifyOcx(); return Ocx.ViewCamera; }
+            set { VerifyOcx(); Ocx.ViewCamera = value; }
+        }
+
+        /// <summary>
+        /// Sets the select, rotate, zoom, and pan tools. 
+        /// </summary>
+        /// <param name="value"></param>
+        public void ViewOperator(EMVOperators value)
+        {
+            VerifyOcx();
+            Ocx.ViewOperator = value;
+        }
+
+        /// <summary>
+        /// Sets the view orientation. 
+        /// </summary>
+        /// <param name="value"></param>
+        public void ViewOrientation(EMVViewOrientation value )
+        {
+            VerifyOcx();
+            Ocx.ViewOrientation = value;
+        }
+
+        /// <summary>
+        /// Gets the view state. 
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public bool ViewState_Get(EMVViewState state)
+        {
+           VerifyOcx(); return Ocx.ViewState(state);      
+        }
+
+        /// <summary>
+        ///sets the view state. 
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="value"></param>True if the view state is set, false if not
+        public void ViewState_Set(EMVViewState state, bool value)
+        {
+            VerifyOcx(); 
+            Ocx.ViewState[state]=value;
+        }
+
+        /// <summary>
+        /// Gets the width of the control. 
+        /// </summary>
+        public int EdrawingWidth
+        {
+            get { VerifyOcx(); return Ocx.Width; }
         }
 
         //TODO More Properties
