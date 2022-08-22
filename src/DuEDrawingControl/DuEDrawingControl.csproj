@@ -5,9 +5,20 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Version>1.0.2</Version>
     <Platforms>x64</Platforms>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/weianweigan/DuEDrawingControl</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/weianweigan/DuEDrawingControl</RepositoryUrl>
+    <PackageIcon>edrawing.png</PackageIcon>
+    <PackageTags>edrawing;solidworks;sw</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\icons\edrawing.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
