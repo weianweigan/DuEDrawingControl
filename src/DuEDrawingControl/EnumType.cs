@@ -83,9 +83,77 @@ namespace DuEDrawingControl
         eMVDensity = 3,
 
         eMVMass = 0,
-        
-        eMVSurfaceArea =1,
+
+        eMVSurfaceArea = 1,
 
         eMVVolume = 2
+    }
+    /// <summary>
+    /// Component states. Bitmask.
+    /// </summary>
+    public enum EMVComponentState
+    {
+        /// <summary>
+        ///  Hidden mode
+        /// </summary>
+        eMVHidden = 1,
+
+        /// <summary>
+        /// Highlight mode. Setting a component to its highlight state is not the same as selecting it in the user interface even though both actions turn the component green.
+        /// </summary>
+        eMVHighlight = 2
+    }
+
+    /// <summary>
+    /// Enable features. Bitmask. 
+    /// </summary>
+    public enum EMVEnableFeatures
+    {
+        eMVDisableGradientBackground = 65536,// Changes the eDrawings Viewer background from a gradient to solid color
+        eMVDisableMeasure = 32768,// Disables measure
+        eMVDisableMenuSave = 8,// Disable the Save selection on the File menu (Complete UI mode) 
+        eMVDisableSNLCheckout = 8192,// Disable SNL checkout  NOTE: If you disable SNL checkout, eDrawings Professional features may be disabled even if the document is review-enabled or if the eDrawings Professional license is present.
+        eMVEnableSilentMode = 16384,// Disable all dialogs
+        eMVEnableUICommands = 4194304,//When eDrawings is run as a COM object, user-interface (UI) commands are enabled
+        eMVFullUI = 16,//Display in Complete UI mode(preferred )
+        eMVHLR = 256,// Display files saved in HLR(Hidden Lines Removed) display mode in HLR display mode
+        eMVReadOnly = 64,// Open the file as read only
+        eMVSeparateMarkup = 128,// Open all markup files associated with this file
+        eMVSimplifiedUI = 32,// Display in Simple UI mode
+        eMVSmallToolbarButtons = 2048,//Display Small toolbar buttons
+        eMVSuppressMarkupFileOpen = 4,//Do not display the File, Markup Open dialog
+        eMVSuppressMarkupOpenMenu = 512,//Disable the Open Markup selection on the File menu
+        eMVSuppressRMBMenu = 1024,// Disable the right-mouse button menu
+        eMVSuppressSavePrompt = 2,// Do not display the Save dialog even if the file was modified
+        eMVSupressMenuBar = 4096,//Hide the Menu toolbar
+        eMVTriad = 1,// Display triad
+    }
+
+    public enum EMVOperators
+    {
+        eMVOperatorPan = 4,// Pan
+        eMVOperatorRotate = 1,// Rotate
+        eMVOperatorSelect = 0,// Select
+        eMVOperatorZoom = 2,// Zoom
+        eMVOperatorZoomToArea = 3, // Zoom to Area
+    }
+
+    public enum EMVViewOrientation
+    {
+        eMVOrientationBack = 1,// Back
+        eMVOrientationBottom = 3,// Bottom
+        eMVOrientationFront = 0, // Front
+        eMVOrientationHome = 8,// As model was when opened
+        eMVOrientationIsoMetric = 6,// Isometric
+        eMVOrientationLeft = 4,// Left
+        eMVOrientationRight = 5,// Right
+        eMVOrientationTop = 2,//  Top
+        eMVOrientationZoomToFit = 7,//Model completely fits in the view area
+    }
+
+    public enum EMVViewState
+    {
+        eMVPerspective = 1,// Perspective view
+        eMVShaded = 2,//Shaded view
     }
 }

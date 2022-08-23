@@ -12,7 +12,10 @@
     <PackageTags>edrawing;solidworks;sw</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+    <Page Remove="Properties\**" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\icons\edrawing.png">

@@ -34,16 +34,19 @@ namespace DuEDrawingControl
         private void Host_OnControlLoaded(dynamic obj)
         {
             Ctrl = obj;
+            
             OnControlLoaded?.Invoke(obj);
         }
 
         private void EDrawingControl_Load(object sender, EventArgs e)
         {
             EDrawingHost = new EDrawingComponent();
-            EDrawingHost.OnControlLoaded += Host_OnControlLoaded;
+            EDrawingHost.OnControlLoaded += Host_OnControlLoaded;      
 
             this.Controls.Add(EDrawingHost);
             EDrawingHost.Dock = DockStyle.Fill;
         }
+
+
     }
 }

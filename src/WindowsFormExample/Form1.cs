@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormExample
@@ -47,11 +48,13 @@ namespace WindowsFormExample
         }
 
         //open local test model
-        private void button2_Click(object sender, EventArgs e)
+        private  void button2_Click(object sender, EventArgs e)
         {
             var testModel = Path.Combine(Path.GetDirectoryName(typeof(Form1).Assembly.Location), "test.SLDPRT");
             eDrawingView.EDrawingHost.OpenDoc(testModel, false, false, false);
+
         }
+
 
         //close active doc
         private void button3_Click(object sender, EventArgs e)

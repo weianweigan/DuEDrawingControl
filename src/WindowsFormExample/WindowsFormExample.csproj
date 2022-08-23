@@ -4,7 +4,7 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <Platforms>x64</Platforms>
-    <OutputType>WinExe</OutputType>    
+    <OutputType>WinExe</OutputType>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\DuEDrawingControl\DuEDrawingControl.csproj" />
