@@ -102,7 +102,6 @@
 
         #endregion
 
-        private DuEDrawingControl.EDrawingView eDrawingView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel paneleDrawing;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
