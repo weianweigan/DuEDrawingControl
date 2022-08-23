@@ -53,19 +53,7 @@ namespace WindowsFormExample
             var testModel = Path.Combine(Path.GetDirectoryName(typeof(Form1).Assembly.Location), "test.SLDPRT");
             eDrawingView.EDrawingHost.OpenDoc(testModel, false, false, false);
 
-
-            eDrawingView.EDrawingHost.OnFinishedLoadingDocument += EDrawingHost_OnFinishedLoadingDocument;
-
         }
-
-        private void EDrawingHost_OnFinishedLoadingDocument([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.BStr)] string FileName)
-        {
-            MessageBox.Show("231");
-        }
-
-
-
-
 
 
         //close active doc

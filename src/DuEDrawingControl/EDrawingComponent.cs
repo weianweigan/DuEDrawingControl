@@ -494,8 +494,8 @@ namespace DuEDrawingControl
         /// <Availability>2020</Availability>
         /// </summary>
         public int InkMarkupCount
-        {
-            get { VerifyOcx(); return Ocx.InkMarkupCount; }
+        {            
+            get { VerifyOcx();return Ocx.InkMarkupCount; }        
         }
 
         /// <summary>
@@ -639,8 +639,8 @@ namespace DuEDrawingControl
         public bool ShowInkMarkup(int InkMarkupIndex)
         {
             VerifyOcx();
-            return Ocx.ShowInkMarkup(InkMarkupIndex);
-        }
+            return Ocx.ShowInkMarkup( InkMarkupIndex);
+        }  
 
         /// <summary>
         /// Gets the layer to show. 
@@ -700,15 +700,15 @@ namespace DuEDrawingControl
         /// </summary>
         public bool StereoEnabled
         {
-            get { VerifyOcx(); return Ocx.StereoEnabled; }
+            get { VerifyOcx();return Ocx.StereoEnabled; }
             set { VerifyOcx(); Ocx.StereoEnabled = value; }
         }
 
         /// <summary>
-        /// Gets or sets the distance between camera position and the stereo focal plane in terms of the camera eye distance.
-        /// </summary>
+        /// Gets or sets the distance between camera position and the stereo focal plane in terms of the camera eye distance. 
         /// <remake>Distance between camera position and the stereo focal plane in terms of the camera eye distance; default stereo distance = 0
-        public float StereoFocalLength
+        /// </summary>
+        public float StereoFocalLength 
         {
             get
             {
@@ -718,7 +718,7 @@ namespace DuEDrawingControl
             set
             {
                 VerifyOcx();
-                Ocx.StereoFocalLength = value;
+                Ocx.StereoFocalLength=value;
             }
         }
 
@@ -738,23 +738,23 @@ namespace DuEDrawingControl
         /// </summary>
         public string TipText_Get(int TooltipID)
         {
-            VerifyOcx(); return Ocx.TipText(TooltipID);
+            VerifyOcx();return Ocx.TipText(TooltipID);           
         }
 
         /// <summary>
         /// sets the text for the specified ToolTip. 
         /// <remake>Write Text for ToolTip
         /// </summary>
-        public void TipText_Set(int TooltipID, string value)
+        public void TipText_Set(int TooltipID,string value)
         {
             VerifyOcx();
-            Ocx.TipText[TooltipID] = value;
+            Ocx.TipText[TooltipID] =value;
         }
 
         /// <summary>
         /// Gets the title of the specified ToolTip
-        /// <remake>ToolTip
         /// </summary>
+        /// <remake>ToolTip
         public string TipTitle_Get(int TooltipID)
         {
             VerifyOcx(); return Ocx.TipTitle(TooltipID);
@@ -764,9 +764,9 @@ namespace DuEDrawingControl
         /// Sets the title of the specified ToolTip
         /// <remake>ToolTip
         /// </summary>
-        public void TipTitle_Set(int TooltipID, string value)
+        public void TipTitle_Set(int TooltipID,string value)
         {
-            VerifyOcx(); Ocx.TipTitle[TooltipID] = value;
+            VerifyOcx();  Ocx.TipTitle[TooltipID]=value;
         }
 
         /// <summary>
@@ -840,7 +840,7 @@ namespace DuEDrawingControl
         public void UserName(string value)
         {
             VerifyOcx();
-            Ocx.UserName = value;
+            Ocx.UserName=value;
         }
 
         /// <summary>
@@ -868,17 +868,17 @@ namespace DuEDrawingControl
         public void ViewOperator(EMVOperators value)
         {
             VerifyOcx();
-            Ocx.ViewOperator = (int)value;
+            Ocx.ViewOperator = value;
         }
 
         /// <summary>
         /// Sets the view orientation. 
         /// </summary>
         /// <param name="value"></param>
-        public void ViewOrientation(EMVViewOrientation value)
+        public void ViewOrientation(EMVViewOrientation value )
         {
             VerifyOcx();
-            Ocx.ViewOrientation = (int)value;
+            Ocx.ViewOrientation = value;
         }
 
         /// <summary>
@@ -888,7 +888,7 @@ namespace DuEDrawingControl
         /// <returns></returns>
         public bool ViewState_Get(EMVViewState state)
         {
-            VerifyOcx(); return Ocx.ViewState((int)state);
+           VerifyOcx(); return Ocx.ViewState(state);      
         }
 
         /// <summary>
@@ -898,8 +898,8 @@ namespace DuEDrawingControl
         /// <param name="value"></param>True if the view state is set, false if not
         public void ViewState_Set(EMVViewState state, bool value)
         {
-            VerifyOcx();
-            Ocx.ViewState[(int)state] = value;
+            VerifyOcx(); 
+            Ocx.ViewState[state]=value;
         }
 
         /// <summary>
@@ -913,7 +913,6 @@ namespace DuEDrawingControl
         #endregion
 
         #region Public Method
-
 
         /// <summary>
         /// Activates the specified SOLIDWORKS ink markup. 
