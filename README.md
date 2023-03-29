@@ -18,6 +18,9 @@ eDrawing Controls for Winform and WPF
 
 <div align=left><img src="./icons/winform.png" width="400"/></div>
 
+Add a measure button（2023.3.29）
+<div align=left><img src="icons/winform_2.png" width="400"/></div>
+
 **WPF**
 
 <div align=left><img src="./icons/wpf.png" width="400"/></div>
@@ -108,6 +111,8 @@ Clone this repository for more
 ## Api List
 
 ![api](./icons/api.png)
+
+![api_Markup](./icons/api_Markup.png)
 
 ## Contact me
 
