@@ -156,4 +156,57 @@ namespace DuEDrawingControl
         eMVPerspective = 1,// Perspective view
         eMVShaded = 2,//Shaded view
     }
+
+
+    #region EModelMarkupControl
+
+    public enum EMVMarkupEnableFeatures
+    {
+        eMVMarkupDisableMarkupTab = 8, //Markup tab is available
+        eMVMarkupLoadMarkupSilent = 4,// No dialogs displayed when Load Markup is silent
+        eMVMarkupMenuSaveMarkup = 1, //Save Markup selection is available on the File menu
+        eMVMarkupToolBar = 2, //Markup toolbar is displayed (Complete UI Mode; apply before opening file to suppress)
+    }
+
+    public enum EMVMarkupOperators
+    {
+        eMVOperatorMarkupArc = 8, // Arc
+        eMVOperatorMarkupCircle = 7,//Circle
+        eMVOperatorMarkupCloud = 4, //Cloud
+        eMVOperatorMarkupCloudWithLeader = 2,//Cloud with leader
+        eMVOperatorMarkupCloudWithText = 3,//Cloud with text
+        eMVOperatorMarkupDimension = 10,//Dimension
+        eMVOperatorMarkupImage = 13,// Markup image
+        eMVOperatorMarkupLine = 5,//Line
+        eMVOperatorMarkupRectangle = 6, //Rectangle
+        eMVOperatorMarkupSpline = 9,//Spline
+        eMVOperatorMarkupText = 1,//Text
+        eMVOperatorMarkupTextWithLeader = 0,//Text with leader
+        eMVOperatorMeasure = 11,//Measure
+        eMVOperatorMoveComponent = 12,//Move component
+        eMVOperatorStamp = 14 //Stamp
+    }
+
+    public enum EMVMarkupViewState
+    {
+        eMVMarkupExplode = 1
+    }
+
+    public enum EMVDistanceUnit
+    {
+        eMVCentimeters = 1,
+        eMVFeet = 4,
+        eMVFeetAndInches = 5,
+        eMVInches = 3,
+        eMVMeters = 2,
+        eMVMillimeters = 0
+    }
+
+    public enum EMVAngleUnit
+    {
+        eMVDegrees = 0,
+        eMVRadians = 1
+    }
+    #endregion
+
 }
