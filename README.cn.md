@@ -16,6 +16,10 @@
 
 <div align=left><img src="icons/winform.png" width="400"/></div>
 
+增加测量按钮（2023.3.29）
+<div align=left><img src="icons/winform_2.png" width="400"/></div>
+
+
 **WPF**
 
 <div align=left><img src="icons/wpf.png" width="400"/></div>
@@ -105,6 +109,8 @@ Clone this repository for more
 ## 实现的edrawing api
 
 ![api](./icons/api.png)
+
+![api_Markup](./icons/api_Markup.png)
 
 ## Contact me
 

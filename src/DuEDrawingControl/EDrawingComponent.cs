@@ -25,6 +25,7 @@ namespace DuEDrawingControl
 
         #region Event
         public event Action<dynamic> OnControlLoaded;
+
         #endregion
 
         #region ctor

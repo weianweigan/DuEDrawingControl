@@ -62,5 +62,18 @@ namespace WindowsFormExample
             eDrawingView.EDrawingHost.CloseActiveDoc();
 
         }
+
+        #region 2023.03.29 Honfeng添加IEModelMarkupControl，用于开启测量
+        private void btnMeasure_Click(object sender, EventArgs e)
+        {
+            //开启和关闭测量
+            eDrawingView.Markup.ViewOperator_Set(EMVMarkupOperators.eMVOperatorMeasure);
+        }
+
+        private void btnRecord_Click(object sender, EventArgs e)
+        {
+            txtMeasures.Text += (!string.IsNullOrEmpty(txtMeasures.Text) ? Environment.NewLine : "") + eDrawingView.Markup.MeasureResultString;
+        } 
+        #endregion
     }
 }
