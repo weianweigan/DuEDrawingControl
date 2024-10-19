@@ -11,7 +11,6 @@
 
 English | [Chinese](https://github.com/weianweigan/DuEDrawingControl/blob/master/README.cn.md)
 
-
 eDrawing Controls for Winform and WPF
 
 **Winform:**
@@ -65,7 +64,7 @@ using DuEDrawingControl;
 
 ### Winform
 
-
+[bilibili video tutorials](https://www.bilibili.com/video/BV1oq2MYkEBJ/?share_source=copy_web&vd_source=b10354526a504418497acde76f5f3d0f) by @[felixzhu1989](https://github.com/felixzhu1989).
 
 ```csharp
 
